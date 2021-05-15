@@ -13,6 +13,7 @@ android {
         applicationId "com.example.android.shoestore"
         minSdkVersion 22
         targetSdkVersion 30
+        vectorDrawables.useSupportLibrary = true
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
