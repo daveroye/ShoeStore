@@ -1,19 +1,17 @@
 package com.example.android.shoestore
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.android.shoestore.databinding.FragmentInstructionsBinding
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import com.example.android.shoestore.databinding.FragmentShoelistBinding
 
-private lateinit var viewModel: ShoeListViewModel
-
 class ShoeListFragment : Fragment() {
+
+    private lateinit var viewModel: ShoeListViewModel
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,
                                 savedInstanceState: Bundle? ): View {
@@ -23,12 +21,24 @@ class ShoeListFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
         binding.shoeListViewModel = viewModel
-        binding.setLifecycleOwner(this)
+        binding.lifecycleOwner = this
 
-        viewModel.shoeList.observe(viewLifecycleOwner, Observer { newShoes ->
+        viewModel.shoeList.observe(viewLifecycleOwner, { newShoes ->
             // TODO: process the new shoe(s) added to the list
         })
+        setHasOptionsMenu(true)
 
         return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.logout_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item,
+            requireView().findNavController())
+                || super.onOptionsItemSelected(item)
     }
 }
