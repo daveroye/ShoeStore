@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">My Shoe Store</string>
+    <string name="label_email">Enter your email address: </string>
+    <string name="prompt_email">Email</string>
+    <string name="label_password">Enter your account password: </string>
+    <string name="prompt_password">Password</string>
+    <string name="action_new_login">Register a new account</string>
+    <string name="action_existing_login">Sign in to an existing account</string>
+    <string name="welcome">"Welcome to my shoe store app!"</string>
+    <string name="instructions">Instructions</string>
+    <string name="instruct1">
+        Get ready for an unbelievable experience with the next generation of shoe store
+        inventory management! Adding shoe inventory has never been easier. Just type in the
+        shoe information and save to the shoe list. It is so simple your grandmother could do it!
+    </string>
+    <string name="instruct2">
+        When you are ready to start entering shoes or just want to browse through shoes you have
+        already entered, simply press the button below, to experience shoe list building like never
+        before!
+    </string>
+    <string name="shoe_list_button_text">Go to Shoe List</string>
+    <string name="shoe_list">Shoe List</string>
+    <string name="shoe_detail">Go to Shoe Detail</string>
+    <string name="logout">Logout</string>
+</resources>
