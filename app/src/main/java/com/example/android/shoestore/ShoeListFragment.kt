@@ -34,6 +34,7 @@ class ShoeListFragment : Fragment() {
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.logout_menu, menu)
+        inflater.inflate(R.menu.instructions_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
