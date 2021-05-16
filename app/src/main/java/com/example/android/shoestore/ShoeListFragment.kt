@@ -2,18 +2,19 @@ package com.example.android.shoestore
 
 import android.os.Bundle
 import android.view.*
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.onNavDestinationSelected
 import com.example.android.shoestore.databinding.FragmentShoelistBinding
+import timber.log.Timber
 
 class ShoeListFragment : Fragment() {
 
-    private lateinit var viewModel: ShoeListViewModel
+    private val viewModel: ShoesViewModel by activityViewModels()
 
     override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?,
                                 savedInstanceState: Bundle? ): View {
@@ -21,15 +22,22 @@ class ShoeListFragment : Fragment() {
         val binding: FragmentShoelistBinding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_shoelist, container, false)
 
-        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
         viewModel.shoeList.observe(viewLifecycleOwner, { newShoes ->
-            // TODO: process the new shoe(s) added to the list
+            if (newShoes.isNotEmpty()) {
+                Timber.i("new shoes!! $newShoes")
+                newShoes.forEach {
+                    val newShoeTextView = TextView(requireContext())
+                    newShoeTextView.text = "${it}"//shoeString
+                    binding.shoeList.addView(newShoeTextView)
+                }
+            }
         })
 
         binding.shoeDetailButton.setOnClickListener {
             findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
         }
 
+        // register for options menu in this view
         setHasOptionsMenu(true)
 
         return binding.root
