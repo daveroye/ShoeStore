@@ -20,6 +20,13 @@
     </string>
     <string name="shoe_list_button_text">Go to Shoe List</string>
     <string name="shoe_list">Shoe List</string>
-    <string name="shoe_detail">Go to Shoe Detail</string>
+    <string name="shoe_detail_button_text">Go to Shoe Detail</string>
+    <string name="shoe_detail">Shoe Detail</string>
+    <string name="shoe_name">Shoe Name</string>
+    <string name="shoe_company">Company</string>
+    <string name="shoe_description">Description</string>
+    <string name="shoe_size">Shoe Size</string>
+    <string name="save_shoe_info">Save Shoe Details</string>
+    <string name="cancel_save">Cancel without Saving</string>
     <string name="logout">Logout</string>
 </resources>
