@@ -2,6 +2,9 @@ package com.example.android.shoestore
 
 import android.os.Bundle
 import android.view.*
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
@@ -10,7 +13,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import com.example.android.shoestore.databinding.FragmentShoelistBinding
-import timber.log.Timber
 
 class ShoeListFragment : Fragment() {
 
@@ -20,14 +22,17 @@ class ShoeListFragment : Fragment() {
                                 savedInstanceState: Bundle? ): View {
 
         val binding: FragmentShoelistBinding = DataBindingUtil.inflate(
-            inflater, R.layout.fragment_shoelist, container, false)
+            inflater, R.layout.fragment_shoelist, null, false)
 
         viewModel.shoeList.observe(viewLifecycleOwner, { newShoes ->
             if (newShoes.isNotEmpty()) {
-                Timber.i("new shoes!! $newShoes")
+                // loop through the list of shoes and add to the view
                 newShoes.forEach {
                     val newShoeTextView = TextView(requireContext())
-                    newShoeTextView.text = "${it}"//shoeString
+                    val shoeString = "name: ${it.name}\n size: ${it.size}\n Company: ${it.company}\n description: ${it.description}\n"
+                    newShoeTextView.text = shoeString
+                    newShoeTextView.layoutParams =
+                        LinearLayout.LayoutParams( MATCH_PARENT, WRAP_CONTENT )
                     binding.shoeList.addView(newShoeTextView)
                 }
             }

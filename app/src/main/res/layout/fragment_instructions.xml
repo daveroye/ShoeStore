@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <FrameLayout
+    <RelativeLayout
         android:id="@+id/instructions_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,36 +16,34 @@
             android:id="@+id/textInst1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="top|center_horizontal"
             android:layout_marginStart="24dp"
             android:layout_marginTop="48dp"
             android:layout_marginEnd="24dp"
+            android:layout_centerHorizontal="true"
             android:text="@string/instruct1"
-            android:textColor="@color/design_default_color_on_primary"
             android:textSize="20sp" />
 
         <TextView
             android:id="@+id/textInst2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center|center_horizontal"
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="24dp"
+            android:layout_below="@id/textInst1"
+            android:layout_centerHorizontal="true"
             android:text="@string/instruct2"
-            android:textColor="@color/design_default_color_on_primary"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/shoeList"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginStart="48dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:text="@string/shoe_list" />
 
-    </FrameLayout>
+    </RelativeLayout>
 
 </layout>

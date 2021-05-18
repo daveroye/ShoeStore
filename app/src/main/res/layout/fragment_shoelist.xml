@@ -1,28 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ScrollView
-        android:id="@+id/shoe_list_scroll"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp" >
 
-        <LinearLayout
-            android:id="@+id/shoe_list"
+        <ScrollView
+            android:id="@+id/shoe_list_scroll"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:fillViewport="true" >
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/shoe_detail_button"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/shoe_list"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|bottom"
-                android:contentDescription="@string/shoe_detail"
-                android:text="@string/shoe_list_button_text"
-                android:textAlignment="center" />
+                android:orientation="vertical" >
 
-        </LinearLayout>
+            </LinearLayout>
 
-    </ScrollView>
+        </ScrollView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/shoe_detail_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:contentDescription="@string/shoe_detail"
+            android:src="@drawable/ic_add" />
+
+    </RelativeLayout>
 
 </layout>
