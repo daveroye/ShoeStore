@@ -12,6 +12,11 @@
             type="com.example.android.shoestore.ShoesViewModel" />
     </data>
 
+    <!--  Constraint layout used here to keep the label, edit boxes,
+          and button elements arranged in relation to each other and
+          ensure placement on the screen irregardless of screen rotation
+          while keeping a relatively flat hierarchy -->
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/shoe_description_layout"
         android:layout_width="match_parent"

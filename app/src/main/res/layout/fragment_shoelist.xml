@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!--  Constraint layout used here to keep the scrolling list
+          and floating button element arranged in relation to each other and
+          ensure placement on the screen irregardless of screen rotation
+          while keeping a relatively flat hierarchy -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,6 +23,11 @@
             app:layout_constraintTop_toTopOf="parent"
             android:fillViewport="true" >
 
+            <!-- A linear layout is needed here to contain multiple textview
+                 children that will be added with each shoe added to the list.
+                 The containing scroll view can only contain one child, so this
+                 linear layout will be that one child that contains all the shoe
+                 list items.-->
             <LinearLayout
                 android:id="@+id/shoe_list"
                 android:layout_width="match_parent"
