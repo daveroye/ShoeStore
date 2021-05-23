@@ -9,7 +9,6 @@ import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import com.example.android.shoestore.databinding.FragmentShoelistBinding
@@ -54,15 +53,8 @@ class ShoeListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // find the nav controller for this view
-        val navController = requireView().findNavController()
-
-        // added to remove current view from back stack that seems to be left
-        // when you navigate to destination given by menu ID
-        navController.popBackStack()
-
         // menuId was set to navigation destination
-        return item.onNavDestinationSelected(navController)
+        return item.onNavDestinationSelected(findNavController())
                 || super.onOptionsItemSelected(item)
     }
 }
