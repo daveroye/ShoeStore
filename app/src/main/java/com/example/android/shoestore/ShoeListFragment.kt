@@ -1,5 +1,6 @@
 package com.example.android.shoestore
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.*
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -10,8 +11,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.onNavDestinationSelected
 import com.example.android.shoestore.databinding.FragmentShoelistBinding
+import timber.log.Timber
 
 class ShoeListFragment : Fragment() {
 
@@ -28,8 +29,14 @@ class ShoeListFragment : Fragment() {
                 // loop through the list of shoes and add to the view
                 newShoes.forEach {
                     val newShoeTextView = TextView(requireContext())
-                    val shoeString = "name: ${it.name}\n size: ${it.size}\n Company: ${it.company}\n description: ${it.description}\n"
+                    val shoeString = it.toString().
+                                        removePrefix("Shoe(").
+                                        removeSuffix("images=[])").
+                                        replace(", ","\n").
+                                        replace("=", ": ")
+                    Timber.i(shoeString)
                     newShoeTextView.text = shoeString
+                    newShoeTextView.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD)
                     newShoeTextView.layoutParams =
                         LinearLayout.LayoutParams( MATCH_PARENT, WRAP_CONTENT )
                     binding.shoeList.addView(newShoeTextView)
@@ -38,7 +45,9 @@ class ShoeListFragment : Fragment() {
         })
 
         binding.shoeDetailButton.setOnClickListener {
-            findNavController().navigate(ShoeListFragmentDirections.actionShoeListFragmentToShoeDetailFragment())
+            findNavController().
+                navigate(ShoeListFragmentDirections.
+                             actionShoeListFragmentToShoeDetailFragment())
         }
 
         // register for options menu in this view
@@ -53,8 +62,11 @@ class ShoeListFragment : Fragment() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // menuId was set to navigation destination
-        return item.onNavDestinationSelected(findNavController())
-                || super.onOptionsItemSelected(item)
+        if (item.itemId == R.id.logout_option) {
+            findNavController().
+                navigate(ShoeListFragmentDirections.
+                             actionShoeListFragmentToLoginFragment())
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
